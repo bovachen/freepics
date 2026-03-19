@@ -1,10 +1,11 @@
 "use client";
 
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import "./Footer.css";
 
 export default function Footer() {
   const t = useTranslations("footer");
+  const locale = useLocale();
 
   return (
     <footer className="footer">
@@ -18,9 +19,8 @@ export default function Footer() {
         </div>
 
         <div className="footer-links">
-          <a href="#" className="footer-link">{t("about")}</a>
-          <a href="#" className="footer-link">{t("privacy")}</a>
-          <a href="#" className="footer-link">{t("contact")}</a>
+          <a href={`/${locale}/about`} className="footer-link">{t("about")}</a>
+          <a href="mailto:bovachen@gmail.com" className="footer-link">{t("contact")}</a>
         </div>
 
         <p className="footer-copyright">{t("copyright")}</p>
@@ -28,3 +28,4 @@ export default function Footer() {
     </footer>
   );
 }
+

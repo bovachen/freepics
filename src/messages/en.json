@@ -88,6 +88,25 @@
     "orDivider": "or",
     "close": "Close"
   },
+  "about": {
+    "title": "About FreePics",
+    "subtitle": "An AI-powered, free 4K wallpaper sharing platform",
+    "missionTitle": "Our Mission",
+    "missionBody": "Every day, FreePics.cc uses cutting-edge AI image generation models — including Flux, SDXL, and more — to automatically create stunning ultra-HD wallpapers across styles from realistic landscapes and cyberpunk cityscapes to anime illustrations. We believe high-quality digital art should be accessible to everyone — always free, no watermarks, fully transparent.",
+    "featureAI": "AI-Powered Creation",
+    "featureAIDesc": "Built on Flux, SDXL and other frontier models with SUPIR 4K upscaling for cinema-quality results",
+    "featureDual": "Dual Orientations",
+    "featureDualDesc": "Every wallpaper in both 16:9 landscape (desktop) and 9:16 portrait (mobile) formats",
+    "featureFree": "Completely Free",
+    "featureFreeDesc": "No watermarks, no ads. AVIF downloads are instant, 4K originals available with a free account",
+    "featureParams": "Full Transparency",
+    "featureParamsDesc": "Every image includes its complete prompt, model, sampler, and generation parameters for creators to learn from",
+    "supportTitle": "Support Us ☕",
+    "supportBody": "FreePics runs entirely on community support. If you enjoy our wallpapers, consider buying us a coffee! Every contribution goes toward server costs and creating more amazing content for everyone.",
+    "supportWechat": "",
+    "contactTitle": "Get in Touch",
+    "contactBody": "Have suggestions, partnership ideas, or feedback? Reach out at"
+  },
   "footer": {
     "copyright": "© 2026 FreePics.cc · AI Generated Wallpaper Platform",
     "about": "About",

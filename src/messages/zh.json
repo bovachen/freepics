@@ -88,6 +88,25 @@
     "orDivider": "或",
     "close": "关闭"
   },
+  "about": {
+    "title": "关于 FreePics",
+    "subtitle": "一个由 AI 驱动的原创高清壁纸公益分享平台",
+    "missionTitle": "我们的使命",
+    "missionBody": "FreePics.cc 每天使用先进的 AI 图像生成技术（Flux、SDXL 等模型），自动创作精美的 4K 超高清壁纸，涵盖写实风景、赛博朋克、动漫插画等多种风格。我们相信优质的数字艺术应该属于每一个人——始终坚持公益分享、无水印、完全免费。",
+    "featureAI": "AI 驱动创作",
+    "featureAIDesc": "基于 Flux、SDXL 等前沿模型，结合 SUPIR 4K 超分辨率技术，打造电影级画质",
+    "featureDual": "横竖双版本",
+    "featureDualDesc": "每张壁纸同时提供 16:9 横版（桌面）和 9:16 竖版（手机）两种尺寸",
+    "featureFree": "完全免费",
+    "featureFreeDesc": "无水印、无广告、AVIF 格式随时下载，4K 原图登录即可获取",
+    "featureParams": "参数透明",
+    "featureParamsDesc": "每张图片附带完整的提示词、模型、采样器等生成参数，方便创作者学习参考",
+    "supportTitle": "支持我们 ☕",
+    "supportBody": "FreePics 的运营完全依靠社区的支持。如果你喜欢我们的壁纸，欢迎请我们喝杯咖啡！每一份打赏都将用于服务器维护和内容创作，帮助我们持续为大家带来更多优质作品。",
+    "supportWechat": "点击图片详情页的「打赏支持」按钮，扫码即可打赏 💛",
+    "contactTitle": "联系我们",
+    "contactBody": "有任何建议、合作意向或问题反馈，欢迎发送邮件至"
+  },
   "footer": {
     "copyright": "© 2026 FreePics.cc · AI 生成壁纸分享平台",
     "about": "关于我们",
