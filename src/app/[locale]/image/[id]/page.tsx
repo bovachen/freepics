@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useTranslations, useLocale } from "next-intl";
 import { useParams, useRouter } from "next/navigation";
 import Image from "next/image";
@@ -19,12 +19,19 @@ export default function ImageDetailPage() {
   const params = useParams();
   const router = useRouter();
   const { user } = useAuth();
+  // 默认先设为 landscape，客户端挂载后自适应
   const [orientation, setOrientation] = useState<Orientation>("landscape");
   const [paramsOpen, setParamsOpen] = useState(false);
   const [tipModalOpen, setTipModalOpen] = useState(false);
   const [authModalOpen, setAuthModalOpen] = useState(false);
   const [liked, setLiked] = useState(false);
   const [favorited, setFavorited] = useState(false);
+
+  // 自动检测设备类型设置默认方向
+  useEffect(() => {
+    const isMobile = window.innerWidth <= 768;
+    setOrientation(isMobile ? "portrait" : "landscape");
+  }, []);
 
   const image = getImageById(params.id as string);
 

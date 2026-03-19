@@ -1,5 +1,6 @@
 "use client";
 
+import { useMemo } from "react";
 import { useLocale } from "next-intl";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
@@ -17,18 +18,28 @@ export default function ImageCard({ image, index = 0 }: ImageCardProps) {
   const title = locale === "zh" ? image.title_zh : image.title_en;
   const tags = locale === "zh" ? image.tags_zh : image.tags_en;
 
+  // 根据 index 确定性地决定横竖版（交替展示，形成错落效果）
+  // 用 id 的 hash 来决定，这样同一张图总是同一个方向
+  const isPortrait = useMemo(() => {
+    const hash = image.id.split("").reduce((acc, c) => acc + c.charCodeAt(0), 0);
+    return hash % 3 === 0; // 约 1/3 的卡片显示竖版
+  }, [image.id]);
+
+  const thumbnail = isPortrait ? image.thumbnail_portrait : image.thumbnail;
+  const aspectRatio = isPortrait ? 9 / 16 : image.aspect_ratio;
+
   return (
     <article
-      className="image-card card"
+      className={`image-card card ${isPortrait ? "portrait" : "landscape"}`}
       style={{ animationDelay: `${index * 60}ms` }}
       onClick={() => router.push(`/${locale}/image/${image.id}`)}
     >
       <div className="image-card-media">
         <Image
-          src={image.thumbnail}
+          src={thumbnail}
           alt={locale === "zh" ? image.alt_text_zh : image.alt_text_en}
-          width={400}
-          height={Math.round(400 / image.aspect_ratio)}
+          width={isPortrait ? 300 : 400}
+          height={Math.round((isPortrait ? 300 : 400) / aspectRatio)}
           className="image-card-img"
           loading="lazy"
         />
