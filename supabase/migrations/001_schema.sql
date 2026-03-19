@@ -21,17 +21,26 @@ CREATE TABLE IF NOT EXISTS images (
   steps           int,
   cfg_scale       float,
   seed            bigint,
+  -- 横版 (landscape 16:9)
   width           int DEFAULT 4096,
   height          int DEFAULT 2304,
+  -- 竖版 (portrait 9:16)
+  width_portrait  int DEFAULT 2304,
+  height_portrait int DEFAULT 4096,
   style           text NOT NULL CHECK (style IN ('realistic', 'anime')),
   is_holiday      boolean DEFAULT false,
   holiday_name    text,
   tags_zh         text[] DEFAULT '{}',
   tags_en         text[] DEFAULT '{}',
+  -- 横版 R2 存储路径
   r2_4k_key       text,
   r2_avif_key     text,
   r2_thumb_1920   text,
   r2_thumb_400    text,
+  -- 竖版 R2 存储路径
+  r2_4k_portrait_key   text,
+  r2_avif_portrait_key text,
+  r2_thumb_portrait    text,
   metadata_source text DEFAULT 'freepics.cc',
   likes_count     int DEFAULT 0,
   views_count     int DEFAULT 0,
