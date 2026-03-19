@@ -1,0 +1,469 @@
+export interface ImageData {
+  id: string;
+  title_zh: string;
+  title_en: string;
+  description_zh: string;
+  description_en: string;
+  alt_text_zh: string;
+  alt_text_en: string;
+  prompt_en: string;
+  prompt_zh: string;
+  negative_prompt: string;
+  model: string;
+  lora_name?: string;
+  sampler: string;
+  steps: number;
+  cfg_scale: number;
+  seed: number;
+  width: number;
+  height: number;
+  style: "realistic" | "anime";
+  is_holiday: boolean;
+  holiday_name?: string;
+  tags_zh: string[];
+  tags_en: string[];
+  thumbnail: string;
+  r2_4k_key: string;
+  r2_avif_key: string;
+  likes_count: number;
+  views_count: number;
+  downloads_4k: number;
+  downloads_avif: number;
+  created_at: string;
+  aspect_ratio: number; // width / height for masonry
+}
+
+export const mockImages: ImageData[] = [
+  {
+    id: "img-001",
+    title_zh: "霓虹京都 · 赛博朋克之夜",
+    title_en: "Neon Kyoto · Cyberpunk Night",
+    description_zh: "一座充满未来感的赛博朋克城市在雨夜中闪耀，霓虹灯倒映在湿漉漉的街道上，飞行汽车穿梭于摩天大楼之间，全息广告牌在雾气中散发着梦幻的光芒。",
+    description_en: "A futuristic cyberpunk city gleams in the rainy night, neon lights reflecting off wet streets, flying cars weaving between skyscrapers, holographic billboards casting an ethereal glow through the mist.",
+    alt_text_zh: "赛博朋克城市夜景，霓虹灯映射在雨后的街道上",
+    alt_text_en: "Cyberpunk cityscape at night with neon reflections on rain-soaked streets",
+    prompt_en: "A breathtaking 4K landscape of a cyberpunk city at night, neon lights reflecting on wet streets, towering skyscrapers with holographic advertisements, flying cars in the distance, cinematic lighting, ultra detailed",
+    prompt_zh: "一幅令人惊叹的赛博朋克城市4K夜景，霓虹灯在湿漉漉的街道上反射，高耸的摩天大楼配有全息广告，远处有飞行汽车，电影级灯光，超精细",
+    negative_prompt: "blurry, low quality, watermark, text, deformed",
+    model: "RealVisFlux v4.0",
+    sampler: "DPM++ 2M Karras",
+    steps: 30,
+    cfg_scale: 7.5,
+    seed: 2847561923,
+    width: 4096,
+    height: 2304,
+    style: "realistic",
+    is_holiday: false,
+    tags_zh: ["赛博朋克", "城市", "夜景", "霓虹", "写实", "科幻"],
+    tags_en: ["cyberpunk", "city", "night", "neon", "realistic", "sci-fi"],
+    thumbnail: "/images/mock/cyberpunk.png",
+    r2_4k_key: "originals/4k/2026/03/img-001.png",
+    r2_avif_key: "avif/img-001.avif",
+    likes_count: 342,
+    views_count: 5823,
+    downloads_4k: 187,
+    downloads_avif: 256,
+    created_at: "2026-03-19",
+    aspect_ratio: 16 / 9,
+  },
+  {
+    id: "img-002",
+    title_zh: "屋顶少女 · 黄昏灯影",
+    title_en: "Rooftop Girl · Twilight Lanterns",
+    description_zh: "一位少女站在屋顶的边缘，俯瞰着被浮空灯笼点亮的魔幻都市。樱花花瓣在金色的夕阳中飘落，天空被壮丽的云彩染成橙紫色调。",
+    description_en: "A girl stands at the edge of a rooftop, gazing upon a magical city illuminated by floating lanterns. Cherry blossom petals drift through the golden sunset, the sky painted in magnificent orange and purple hues.",
+    alt_text_zh: "动漫风格，少女站在屋顶俯瞰城市，天空灯笼飘浮",
+    alt_text_en: "Anime style girl standing on rooftop overlooking city with floating lanterns in sky",
+    prompt_en: "A stunning anime wallpaper in the style of Makoto Shinkai, a girl standing on a rooftop overlooking a magical city with floating lanterns, cherry blossom petals falling, golden hour sunset sky",
+    prompt_zh: "新海诚风格的精美动漫壁纸，少女站在屋顶上俯瞰有漂浮灯笼的魔幻城市，樱花花瓣飘落，黄金时段日落天空",
+    negative_prompt: "3d render, realistic, photo, blurry, low quality",
+    model: "Illustrious-XL v3.0",
+    lora_name: "shinkai_style_v2",
+    sampler: "Euler a",
+    steps: 28,
+    cfg_scale: 8.0,
+    seed: 1923847562,
+    width: 2304,
+    height: 4096,
+    style: "anime",
+    is_holiday: false,
+    tags_zh: ["动漫", "少女", "城市", "日落", "樱花", "新海诚"],
+    tags_en: ["anime", "girl", "city", "sunset", "cherry blossom", "shinkai"],
+    thumbnail: "/images/mock/anime-rooftop.png",
+    r2_4k_key: "originals/4k/2026/03/img-002.png",
+    r2_avif_key: "avif/img-002.avif",
+    likes_count: 891,
+    views_count: 12340,
+    downloads_4k: 445,
+    downloads_avif: 612,
+    created_at: "2026-03-19",
+    aspect_ratio: 9 / 16,
+  },
+  {
+    id: "img-003",
+    title_zh: "雪峰倒影 · 阿尔卑斯晨光",
+    title_en: "Alpine Reflection · Mountain Sunrise",
+    description_zh: "阿尔卑斯群山在黎明的第一缕阳光下苏醒，雪峰完美倒映在宁静的高山湖泊中。天空被橙紫色的云彩装点，前景的松林为画面增添了深邃的层次感。",
+    description_en: "Alpine peaks awaken to the first rays of dawn, snow-capped summits perfectly reflected in the tranquil mountain lake. The sky adorned with orange and purple clouds, pine forests in the foreground adding depth and dimension.",
+    alt_text_zh: "雪山湖泊倒影日出风景",
+    alt_text_en: "Snow-capped mountain lake reflection at sunrise",
+    prompt_en: "A majestic mountain landscape at sunrise, snow-capped peaks with alpine lake reflection, dramatic sky with orange and purple clouds, pine forest in foreground, photorealistic, National Geographic quality",
+    prompt_zh: "日出时分壮丽的山脉风景，雪峰倒映在高山湖泊中，天空有橙紫色的壮丽云彩，前景为松林，高度写实，国家地理品质",
+    negative_prompt: "cartoon, painting, illustration, blurry, oversaturated",
+    model: "RealVisFlux v4.0",
+    sampler: "DPM++ 2M Karras",
+    steps: 35,
+    cfg_scale: 7.0,
+    seed: 3847261590,
+    width: 4096,
+    height: 2304,
+    style: "realistic",
+    is_holiday: false,
+    tags_zh: ["风景", "雪山", "湖泊", "日出", "写实", "自然"],
+    tags_en: ["landscape", "mountain", "lake", "sunrise", "realistic", "nature"],
+    thumbnail: "/images/mock/mountain.png",
+    r2_4k_key: "originals/4k/2026/03/img-003.png",
+    r2_avif_key: "avif/img-003.avif",
+    likes_count: 527,
+    views_count: 8392,
+    downloads_4k: 312,
+    downloads_avif: 403,
+    created_at: "2026-03-18",
+    aspect_ratio: 16 / 9,
+  },
+  {
+    id: "img-004",
+    title_zh: "紫藤花下 · 和风庭院",
+    title_en: "Under Wisteria · Japanese Garden",
+    description_zh: "身着和服的少女静坐在锦鲤池畔，紫藤花从头顶的棚架垂落。远处的�的鸟居被夕阳映照成金色，整个庭院沉浸在一片祥和而梦幻的氛围中。",
+    description_en: "A kimono-clad girl sits quietly by a koi pond, wisteria cascading from the overhead pergola. The distant torii gate glows golden in the sunset, the entire garden immersed in a serene and dreamlike atmosphere.",
+    alt_text_zh: "动漫风格，和服少女坐在日式庭院的锦鲤池旁",
+    alt_text_en: "Anime style girl in kimono by koi pond in Japanese garden",
+    prompt_en: "A beautiful anime wallpaper of a tranquil Japanese garden scene with a girl in kimono sitting by a koi pond, torii gate in background, wisteria hanging overhead, soft golden light, dreamy atmosphere",
+    prompt_zh: "美丽的动漫壁纸，宁静的日式庭院场景，和服少女坐在锦鲤池旁，背景有鸟居，紫藤从头顶垂下，柔和的金色光线，如梦如幻的氛围",
+    negative_prompt: "3d, realistic, photo, blurry, dark, low quality",
+    model: "Illustrious-XL v3.0",
+    lora_name: "japanese_garden_v1",
+    sampler: "Euler a",
+    steps: 25,
+    cfg_scale: 7.5,
+    seed: 4928371056,
+    width: 4096,
+    height: 4096,
+    style: "anime",
+    is_holiday: false,
+    tags_zh: ["动漫", "日式庭院", "和服", "少女", "鸟居", "治愈"],
+    tags_en: ["anime", "japanese garden", "kimono", "girl", "torii", "healing"],
+    thumbnail: "/images/mock/anime-garden.png",
+    r2_4k_key: "originals/4k/2026/03/img-004.png",
+    r2_avif_key: "avif/img-004.avif",
+    likes_count: 723,
+    views_count: 9856,
+    downloads_4k: 389,
+    downloads_avif: 501,
+    created_at: "2026-03-18",
+    aspect_ratio: 1,
+  },
+  {
+    id: "img-005",
+    title_zh: "星云漩涡 · 宇宙深处",
+    title_en: "Nebula Vortex · Deep Space",
+    description_zh: "宇宙深处的星云以紫色和青色交织成壮观的漩涡，数千颗恒星在星云中闪烁。远处一个螺旋星系清晰可见，附近恒星的体积光照亮了整个星际空间。",
+    description_en: "Deep space nebula intertwines purple and teal into a spectacular vortex, thousands of stars twinkling within. A distant spiral galaxy is clearly visible, volumetric light from a nearby sun illuminating the cosmic expanse.",
+    alt_text_zh: "紫色和青色的宇宙星云漩涡",
+    alt_text_en: "Cosmic nebula vortex in purple and teal colors",
+    prompt_en: "An epic deep space nebula, colorful cosmic clouds in purple and teal, thousands of stars, a distant galaxy spiral visible, volumetric lighting from a nearby sun, astrophotography style, ultra detailed 4K",
+    prompt_zh: "史诗级宇宙深处星云，紫色和青色的绚丽宇宙云，数千颗恒星，远处可见螺旋星系，附近恒星的体积光照明，天体摄影风格，超精细4K",
+    negative_prompt: "cartoon, illustration, text, watermark, blurry",
+    model: "RealVisFlux v4.0",
+    sampler: "DPM++ 2M Karras",
+    steps: 32,
+    cfg_scale: 6.5,
+    seed: 5839274016,
+    width: 4096,
+    height: 4096,
+    style: "realistic",
+    is_holiday: false,
+    tags_zh: ["星空", "星云", "宇宙", "写实", "紫色", "太空"],
+    tags_en: ["stars", "nebula", "space", "realistic", "purple", "cosmos"],
+    thumbnail: "/images/mock/space.png",
+    r2_4k_key: "originals/4k/2026/03/img-005.png",
+    r2_avif_key: "avif/img-005.avif",
+    likes_count: 456,
+    views_count: 7234,
+    downloads_4k: 267,
+    downloads_avif: 339,
+    created_at: "2026-03-17",
+    aspect_ratio: 1,
+  },
+  {
+    id: "img-006",
+    title_zh: "金色海平面 · 孤帆远影",
+    title_en: "Golden Horizon · Lone Sailboat",
+    description_zh: "黄金时段的海平面如镜面般平静，一艘孤独的帆船剪影映衬在壮丽的日落中。天空和海面被染成橘金色调，层叠的云彩如同大师手笔的油画。",
+    description_en: "The golden hour ocean surface lies mirror-calm, a lone sailboat silhouetted against the magnificent sunset. Sky and sea are painted in golden-orange hues, layered clouds resembling master strokes of an oil painting.",
+    alt_text_zh: "海洋日落中的孤帆剪影",
+    alt_text_en: "Lone sailboat silhouette in ocean sunset",
+    prompt_en: "A serene ocean sunset, golden hour light reflecting on calm crystal clear water, silhouette of a lone sailboat, dramatic clouds painted in orange and pink, professional landscape photography, ultra detailed",
+    prompt_zh: "宁静的海洋日落，金色时光映照在平静清澈的水面上，孤帆剪影，橙粉色的壮丽云彩，专业风景摄影，超精细",
+    negative_prompt: "cartoon, painting, blurry, overexposed, noise",
+    model: "RealVisFlux v4.0",
+    sampler: "DPM++ 2M Karras",
+    steps: 30,
+    cfg_scale: 7.0,
+    seed: 6729481035,
+    width: 4096,
+    height: 2304,
+    style: "realistic",
+    is_holiday: false,
+    tags_zh: ["海洋", "日落", "帆船", "写实", "暖色", "自然"],
+    tags_en: ["ocean", "sunset", "sailboat", "realistic", "warm", "nature"],
+    thumbnail: "/images/mock/ocean.png",
+    r2_4k_key: "originals/4k/2026/03/img-006.png",
+    r2_avif_key: "avif/img-006.avif",
+    likes_count: 612,
+    views_count: 9145,
+    downloads_4k: 334,
+    downloads_avif: 415,
+    created_at: "2026-03-17",
+    aspect_ratio: 16 / 9,
+  },
+  {
+    id: "img-007",
+    title_zh: "迷雾森林 · 晨光穿林",
+    title_en: "Misty Forest · Morning Light",
+    description_zh: "清晨的阳光穿透迷雾笼罩的古老森林，光柱在苔藓覆盖的树干间形成壮观的丁达尔效应。整个森林沐浴在一层金绿色的柔光中。",
+    description_en: "Morning sunlight pierces through a mist-shrouded ancient forest, light beams creating spectacular Tyndall effects among moss-covered trunks. The entire forest bathed in a soft golden-green glow.",
+    alt_text_zh: "清晨阳光穿透迷雾森林的丁达尔效应",
+    alt_text_en: "Morning light beams through misty forest creating Tyndall effect",
+    prompt_en: "Ethereal misty forest at dawn, god rays piercing through ancient trees, moss-covered trunks, volumetric fog, mystical atmosphere, cinematic photography, 4K ultra detailed",
+    prompt_zh: "黎明时分的空灵迷雾森林，光柱穿透古老树木，苔藓覆盖的树干，体积雾效果，神秘氛围，电影级摄影，4K超精细",
+    negative_prompt: "cartoon, illustration, oversaturated, noise, blurry",
+    model: "RealVisFlux v4.0",
+    sampler: "DPM++ 2M Karras",
+    steps: 30,
+    cfg_scale: 7.0,
+    seed: 7819356204,
+    width: 4096,
+    height: 2730,
+    style: "realistic",
+    is_holiday: false,
+    tags_zh: ["森林", "迷雾", "晨光", "写实", "自然", "冷色"],
+    tags_en: ["forest", "mist", "morning", "realistic", "nature", "cool"],
+    thumbnail: "/images/mock/mountain.png",
+    r2_4k_key: "originals/4k/2026/03/img-007.png",
+    r2_avif_key: "avif/img-007.avif",
+    likes_count: 389,
+    views_count: 6712,
+    downloads_4k: 201,
+    downloads_avif: 278,
+    created_at: "2026-03-16",
+    aspect_ratio: 3 / 2,
+  },
+  {
+    id: "img-008",
+    title_zh: "极光之夜 · 冰岛冬歌",
+    title_en: "Aurora Night · Iceland Winter Song",
+    description_zh: "绚烂的北极光在冰岛的夜空中舞动，绿色和紫色的光带划过星空。冰湖的倒影让极光的美景增倍，远处的冰川在月光下泛着幽蓝的光芒。",
+    description_en: "Brilliant northern lights dance across Iceland's night sky, green and purple auroral bands sweeping through the stars. The ice lake reflection doubles the spectacle, distant glaciers glowing pale blue in the moonlight.",
+    alt_text_zh: "冰岛夜空中的绿色北极光",
+    alt_text_en: "Green northern lights aurora above Iceland landscape",
+    prompt_en: "Spectacular northern lights over Iceland, green and purple aurora borealis, frozen lake reflection, snowy landscape, starry sky, astrophotography, 4K ultra-detailed",
+    prompt_zh: "冰岛上空壮丽的北极光，绿色和紫色的极光，冰冻湖泊倒影，雪景，星空，天体摄影，4K超精细",
+    negative_prompt: "cartoon, illustration, blurry, oversaturated, noise",
+    model: "RealVisFlux v4.0",
+    sampler: "DPM++ 2M Karras",
+    steps: 30,
+    cfg_scale: 7.0,
+    seed: 8901234567,
+    width: 4096,
+    height: 2304,
+    style: "realistic",
+    is_holiday: false,
+    tags_zh: ["极光", "冰岛", "夜景", "写实", "冷色", "自然"],
+    tags_en: ["aurora", "iceland", "night", "realistic", "cool", "nature"],
+    thumbnail: "/images/mock/space.png",
+    r2_4k_key: "originals/4k/2026/03/img-008.png",
+    r2_avif_key: "avif/img-008.avif",
+    likes_count: 567,
+    views_count: 8902,
+    downloads_4k: 289,
+    downloads_avif: 367,
+    created_at: "2026-03-16",
+    aspect_ratio: 16 / 9,
+  },
+  {
+    id: "img-009",
+    title_zh: "机甲少女 · 战场黄昏",
+    title_en: "Mecha Girl · Battlefield Dusk",
+    description_zh: "身着精密机甲的少女战士伫立在战场废墟之上，燃烧的残骸在身后冒着浓烟。黄昏的逆光勾勒出她坚定的轮廓，风吹起她的长发。",
+    description_en: "A girl warrior in intricate mecha armor stands atop battlefield ruins, burning debris smoking behind her. The dusk backlight traces her determined silhouette, wind catching her flowing hair.",
+    alt_text_zh: "机甲少女站在战场废墟上的动漫插画",
+    alt_text_en: "Anime mecha girl standing on battlefield ruins",
+    prompt_en: "Epic anime illustration of a mecha girl warrior standing on battlefield ruins, detailed mechanical armor, burning debris behind, dramatic dusk backlight, wind-blown hair, cinematic composition",
+    prompt_zh: "史诗级动漫插画，机甲少女战士站在战场废墟上，精密机械装甲，身后燃烧的残骸，戏剧性黄昏逆光，风吹长发，电影构图",
+    negative_prompt: "3d, realistic, photo, blurry, low quality, deformed hands",
+    model: "Illustrious-XL v3.0",
+    lora_name: "mecha_detailed_v3",
+    sampler: "Euler a",
+    steps: 28,
+    cfg_scale: 8.0,
+    seed: 9012345678,
+    width: 4096,
+    height: 2304,
+    style: "anime",
+    is_holiday: false,
+    tags_zh: ["动漫", "机甲", "少女", "战场", "科幻", "暖色"],
+    tags_en: ["anime", "mecha", "girl", "battlefield", "sci-fi", "warm"],
+    thumbnail: "/images/mock/cyberpunk.png",
+    r2_4k_key: "originals/4k/2026/03/img-009.png",
+    r2_avif_key: "avif/img-009.avif",
+    likes_count: 834,
+    views_count: 11203,
+    downloads_4k: 423,
+    downloads_avif: 567,
+    created_at: "2026-03-15",
+    aspect_ratio: 16 / 9,
+  },
+  {
+    id: "img-010",
+    title_zh: "东京夜雨 · 涩谷十字路口",
+    title_en: "Tokyo Rain · Shibuya Crossing",
+    description_zh: "雨中的涩谷十字路口在夜色中闪烁着璀璨的灯光，行人撑着伞穿越这座世界上最繁忙的路口。灯光和雨水在柏油路面上交织出五彩斑斓的光影。",
+    description_en: "Shibuya Crossing sparkles with brilliant lights in the rainy night, pedestrians with umbrellas crossing the world's busiest intersection. Lights and rain interweave colorful reflections on the asphalt surface.",
+    alt_text_zh: "雨夜的东京涩谷十字路口",
+    alt_text_en: "Rainy night at Tokyo Shibuya Crossing",
+    prompt_en: "Cinematic photo of Shibuya Crossing Tokyo in the rain at night, crowds with umbrellas, neon reflections on wet asphalt, vibrant city lights, long exposure effect, photorealistic, 4K ultra detailed",
+    prompt_zh: "电影级东京涩谷十字路口雨夜照片，撑伞的人群，湿沥青路面上的霓虹倒影，鲜艳的城市灯光，长曝光效果，高度写实，4K超精细",
+    negative_prompt: "cartoon, illustration, blurry, overexposed, noise",
+    model: "RealVisFlux v4.0",
+    sampler: "DPM++ 2M Karras",
+    steps: 30,
+    cfg_scale: 7.5,
+    seed: 1234509876,
+    width: 4096,
+    height: 2730,
+    style: "realistic",
+    is_holiday: false,
+    tags_zh: ["城市", "夜景", "雨天", "东京", "写实", "霓虹"],
+    tags_en: ["city", "night", "rain", "tokyo", "realistic", "neon"],
+    thumbnail: "/images/mock/cyberpunk.png",
+    r2_4k_key: "originals/4k/2026/03/img-010.png",
+    r2_avif_key: "avif/img-010.avif",
+    likes_count: 478,
+    views_count: 7894,
+    downloads_4k: 256,
+    downloads_avif: 334,
+    created_at: "2026-03-15",
+    aspect_ratio: 3 / 2,
+  },
+  {
+    id: "img-011",
+    title_zh: "水下花园 · 珊瑚世界",
+    title_en: "Underwater Garden · Coral World",
+    description_zh: "阳光穿透碧蓝的海水，照亮了一片色彩斑斓的珊瑚礁生态系统。热带鱼群在珊瑚间穿梭，海龟悠然游过，水面的波光在海底形成美丽的光斑。",
+    description_en: "Sunlight penetrates the azure water, illuminating a colorful coral reef ecosystem. Tropical fish schools weave through corals, sea turtles glide gracefully, surface light creating beautiful caustic patterns on the ocean floor.",
+    alt_text_zh: "水下珊瑚礁生态系统的写实壁纸",
+    alt_text_en: "Underwater coral reef ecosystem realistic wallpaper",
+    prompt_en: "Stunning underwater coral reef scene, sunbeams through crystal clear blue water, colorful tropical fish, sea turtle, vibrant corals, caustic light patterns, underwater photography, 4K",
+    prompt_zh: "令人惊叹的水下珊瑚礁场景，阳光穿透清澈的蓝色海水，色彩斑斓的热带鱼，海龟，生机勃勃的珊瑚，焦散光斑，水下摄影，4K",
+    negative_prompt: "cartoon, blurry, dark, murky, noise",
+    model: "RealVisFlux v4.0",
+    sampler: "DPM++ 2M Karras",
+    steps: 30,
+    cfg_scale: 7.0,
+    seed: 2345670981,
+    width: 4096,
+    height: 2304,
+    style: "realistic",
+    is_holiday: false,
+    tags_zh: ["海洋", "珊瑚", "水下", "写实", "自然", "暖色"],
+    tags_en: ["ocean", "coral", "underwater", "realistic", "nature", "warm"],
+    thumbnail: "/images/mock/ocean.png",
+    r2_4k_key: "originals/4k/2026/03/img-011.png",
+    r2_avif_key: "avif/img-011.avif",
+    likes_count: 345,
+    views_count: 5678,
+    downloads_4k: 178,
+    downloads_avif: 234,
+    created_at: "2026-03-14",
+    aspect_ratio: 16 / 9,
+  },
+  {
+    id: "img-012",
+    title_zh: "浮空城堡 · 云海奇幻",
+    title_en: "Floating Castle · Sea of Clouds",
+    description_zh: "一座宏伟的浮空城堡悬浮在云海之上，瀑布从城堡底部倾泻而下消失在云层中。金色的阳光洒在城堡的尖塔上，周围飞翔着神秘的飞龙。",
+    description_en: "A magnificent floating castle hovers above a sea of clouds, waterfalls cascading from its base and vanishing into the cloud layer. Golden sunlight bathes the castle spires, with mysterious dragons soaring nearby.",
+    alt_text_zh: "浮空城堡悬浮在云海上方的奇幻场景",
+    alt_text_en: "Fantasy floating castle hovering above sea of clouds",
+    prompt_en: "Epic fantasy floating castle above clouds, waterfalls cascading from base, golden sunlight on spires, dragons flying, magical atmosphere, detailed architecture, anime illustration, 4K",
+    prompt_zh: "史诗级奇幻浮空城堡，悬浮在云层之上，瀑布从底部倾泻，金色阳光照射尖塔，飞龙翱翔，魔幻氛围，精细建筑，动漫插画，4K",
+    negative_prompt: "realistic, photo, blurry, low quality, simple",
+    model: "Illustrious-XL v3.0",
+    lora_name: "fantasy_castle_v2",
+    sampler: "Euler a",
+    steps: 28,
+    cfg_scale: 8.0,
+    seed: 3456781092,
+    width: 4096,
+    height: 2304,
+    style: "anime",
+    is_holiday: false,
+    tags_zh: ["动漫", "奇幻", "城堡", "云海", "龙", "魔幻"],
+    tags_en: ["anime", "fantasy", "castle", "clouds", "dragon", "magical"],
+    thumbnail: "/images/mock/mountain.png",
+    r2_4k_key: "originals/4k/2026/03/img-012.png",
+    r2_avif_key: "avif/img-012.avif",
+    likes_count: 667,
+    views_count: 9234,
+    downloads_4k: 345,
+    downloads_avif: 423,
+    created_at: "2026-03-14",
+    aspect_ratio: 16 / 9,
+  },
+];
+
+// Get all unique tags
+export function getAllTags(locale: "zh" | "en"): string[] {
+  const tagSet = new Set<string>();
+  mockImages.forEach((img) => {
+    const tags = locale === "zh" ? img.tags_zh : img.tags_en;
+    tags.forEach((tag) => tagSet.add(tag));
+  });
+  return Array.from(tagSet).sort();
+}
+
+// Get image by ID
+export function getImageById(id: string): ImageData | undefined {
+  return mockImages.find((img) => img.id === id);
+}
+
+// Search images
+export function searchImages(query: string, locale: "zh" | "en"): ImageData[] {
+  const q = query.toLowerCase();
+  return mockImages.filter((img) => {
+    const title = locale === "zh" ? img.title_zh : img.title_en;
+    const desc = locale === "zh" ? img.description_zh : img.description_en;
+    const tags = locale === "zh" ? img.tags_zh : img.tags_en;
+    return (
+      title.toLowerCase().includes(q) ||
+      desc.toLowerCase().includes(q) ||
+      tags.some((t) => t.toLowerCase().includes(q))
+    );
+  });
+}
+
+// Filter by tag
+export function getImagesByTag(tag: string, locale: "zh" | "en"): ImageData[] {
+  return mockImages.filter((img) => {
+    const tags = locale === "zh" ? img.tags_zh : img.tags_en;
+    return tags.some((t) => t.toLowerCase() === tag.toLowerCase());
+  });
+}
+
+// Filter by style
+export function getImagesByStyle(style: "realistic" | "anime" | "all"): ImageData[] {
+  if (style === "all") return mockImages;
+  return mockImages.filter((img) => img.style === style);
+}

@@ -1,0 +1,98 @@
+{
+  "site": {
+    "name": "FreePics",
+    "tagline": "Original 4K HD Wallpapers · Updated Daily",
+    "description": "FreePics is a free AI-generated HD wallpaper sharing platform, updated daily with stunning 4K/2K realistic and anime wallpapers."
+  },
+  "nav": {
+    "home": "Home",
+    "search": "Search",
+    "tags": "Tags",
+    "profile": "Profile",
+    "login": "Sign In",
+    "logout": "Sign Out",
+    "language": "中文"
+  },
+  "home": {
+    "hero": "Discover Stunning Wallpapers",
+    "heroSub": "Daily updated AI-generated 4K HD wallpapers in realistic and anime styles",
+    "filterAll": "All",
+    "filterRealistic": "Realistic",
+    "filterAnime": "Anime",
+    "sortLatest": "Latest",
+    "sortPopular": "Popular",
+    "sortDownloads": "Downloads",
+    "sortRandom": "Random"
+  },
+  "image": {
+    "likes": "Likes",
+    "views": "Views",
+    "downloads": "Downloads",
+    "download4K": "Download 4K Original",
+    "downloadAVIF": "Download AVIF",
+    "tip": "Support Us",
+    "tipTitle": "Thank you for your support!",
+    "tipDesc": "Your contribution helps keep our servers running",
+    "favorite": "Favorite",
+    "favorited": "Favorited",
+    "liked": "Liked",
+    "share": "Share",
+    "similar": "Similar Wallpapers",
+    "params": "Generation Parameters",
+    "prompt": "Prompt",
+    "negativePrompt": "Negative Prompt",
+    "model": "Model",
+    "lora": "LoRA",
+    "sampler": "Sampler",
+    "steps": "Steps",
+    "cfgScale": "CFG Scale",
+    "seed": "Seed",
+    "resolution": "Resolution",
+    "style": "Style",
+    "realistic": "Realistic",
+    "anime": "Anime",
+    "holiday": "Holiday",
+    "createdAt": "Created",
+    "tags": "Tags",
+    "loginToAction": "Please sign in first"
+  },
+  "search": {
+    "title": "Search Wallpapers",
+    "placeholder": "Search wallpapers...",
+    "noResults": "No wallpapers found",
+    "results": "Results"
+  },
+  "tag": {
+    "title": "Tags",
+    "relatedImages": "Related Wallpapers"
+  },
+  "profile": {
+    "title": "Profile",
+    "myLikes": "My Likes",
+    "myFavorites": "My Favorites",
+    "myDownloads": "Download History",
+    "empty": "No records yet",
+    "loginRequired": "Please sign in to view your profile",
+    "loginButton": "Sign In"
+  },
+  "auth": {
+    "loginTitle": "Sign in to FreePics",
+    "loginDesc": "Sign in to save your likes, favorites, and download history",
+    "withGithub": "Continue with GitHub",
+    "withGoogle": "Continue with Google",
+    "withEmail": "Email Sign In",
+    "emailPlaceholder": "Enter your email",
+    "passwordPlaceholder": "Enter your password",
+    "loginButton": "Sign In",
+    "registerButton": "Register",
+    "orDivider": "or",
+    "close": "Close"
+  },
+  "footer": {
+    "copyright": "© 2026 FreePics.cc · AI Generated Wallpaper Platform",
+    "about": "About",
+    "privacy": "Privacy",
+    "contact": "Contact",
+    "poweredBy": "Powered by AI, updated daily"
+  }
+}

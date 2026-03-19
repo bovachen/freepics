@@ -1,0 +1,98 @@
+{
+  "site": {
+    "name": "FreePics",
+    "tagline": "原创 4K 高清壁纸 · 每日更新",
+    "description": "FreePics 是一个免费的 AI 生成高清壁纸分享平台，每天更新精美的 4K/2K 写实与动漫壁纸。"
+  },
+  "nav": {
+    "home": "首页",
+    "search": "搜索",
+    "tags": "标签",
+    "profile": "个人中心",
+    "login": "登录",
+    "logout": "退出",
+    "language": "EN"
+  },
+  "home": {
+    "hero": "发现精美壁纸",
+    "heroSub": "每日更新 AI 生成的 4K 高清壁纸，写实与动漫风格",
+    "filterAll": "全部",
+    "filterRealistic": "写实",
+    "filterAnime": "动漫",
+    "sortLatest": "最新",
+    "sortPopular": "最热",
+    "sortDownloads": "下载量",
+    "sortRandom": "随机"
+  },
+  "image": {
+    "likes": "点赞",
+    "views": "浏览",
+    "downloads": "下载",
+    "download4K": "下载 4K 原图",
+    "downloadAVIF": "下载 AVIF",
+    "tip": "打赏支持",
+    "tipTitle": "感谢您的支持！",
+    "tipDesc": "您的打赏将帮助我们维持服务器运营",
+    "favorite": "收藏",
+    "favorited": "已收藏",
+    "liked": "已点赞",
+    "share": "分享",
+    "similar": "相似推荐",
+    "params": "生成参数",
+    "prompt": "提示词",
+    "negativePrompt": "负面提示词",
+    "model": "模型",
+    "lora": "LoRA",
+    "sampler": "采样器",
+    "steps": "步数",
+    "cfgScale": "CFG Scale",
+    "seed": "Seed",
+    "resolution": "分辨率",
+    "style": "风格",
+    "realistic": "写实",
+    "anime": "动漫",
+    "holiday": "节日",
+    "createdAt": "生成日期",
+    "tags": "标签",
+    "loginToAction": "请先登录"
+  },
+  "search": {
+    "title": "搜索壁纸",
+    "placeholder": "输入关键词搜索...",
+    "noResults": "未找到相关壁纸",
+    "results": "搜索结果"
+  },
+  "tag": {
+    "title": "标签",
+    "relatedImages": "相关壁纸"
+  },
+  "profile": {
+    "title": "个人中心",
+    "myLikes": "我的点赞",
+    "myFavorites": "我的收藏",
+    "myDownloads": "下载历史",
+    "empty": "暂无记录",
+    "loginRequired": "请登录以查看个人中心",
+    "loginButton": "立即登录"
+  },
+  "auth": {
+    "loginTitle": "登录 FreePics",
+    "loginDesc": "登录后可以保存您的点赞、收藏和下载记录",
+    "withGithub": "使用 GitHub 登录",
+    "withGoogle": "使用 Google 登录",
+    "withEmail": "邮箱登录",
+    "emailPlaceholder": "请输入邮箱",
+    "passwordPlaceholder": "请输入密码",
+    "loginButton": "登录",
+    "registerButton": "注册",
+    "orDivider": "或",
+    "close": "关闭"
+  },
+  "footer": {
+    "copyright": "© 2026 FreePics.cc · AI 生成壁纸分享平台",
+    "about": "关于我们",
+    "privacy": "隐私政策",
+    "contact": "联系我们",
+    "poweredBy": "由 AI 驱动，每日自动更新"
+  }
+}

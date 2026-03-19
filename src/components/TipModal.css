@@ -1,0 +1,63 @@
+.tip-modal {
+  max-width: 380px;
+  text-align: center;
+}
+
+.tip-header {
+  margin-bottom: var(--space-6);
+}
+
+.tip-emoji {
+  font-size: 48px;
+  display: block;
+  margin-bottom: var(--space-3);
+}
+
+.tip-title {
+  font-size: var(--text-xl);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: var(--space-2);
+}
+
+.tip-desc {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+}
+
+.tip-qr-placeholder {
+  display: flex;
+  justify-content: center;
+  margin-bottom: var(--space-4);
+}
+
+.qr-code-box {
+  width: 220px;
+  height: 220px;
+  border: 2px dashed var(--border-default);
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  background: var(--bg-tertiary);
+}
+
+.qr-placeholder-text {
+  font-size: var(--text-lg);
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.qr-note {
+  font-size: var(--text-xs);
+  color: var(--text-tertiary);
+  text-align: center;
+  line-height: 1.5;
+}
+
+.tip-note {
+  font-size: var(--text-sm);
+  color: var(--text-tertiary);
+}
