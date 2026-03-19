@@ -5,9 +5,70 @@
 /* Hero Image */
 .detail-hero {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   background: var(--bg-secondary);
   padding: var(--space-4) 0;
+  gap: var(--space-4);
+}
+
+/* Orientation Toggle */
+.orientation-toggle {
+  display: flex;
+  gap: var(--space-2);
+  padding: var(--space-1);
+  background: var(--bg-glass);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+}
+
+.orient-btn {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-md);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--text-tertiary);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.orient-btn.active {
+  background: var(--accent-primary);
+  color: white;
+  box-shadow: 0 2px 8px rgba(99, 102, 241, 0.3);
+}
+
+.orient-btn:not(.active):hover {
+  color: var(--text-primary);
+  background: var(--bg-tertiary);
+}
+
+.orient-icon {
+  font-size: 14px;
+  line-height: 1;
+}
+
+.orient-landscape {
+  display: inline-block;
+  width: 18px;
+  height: 12px;
+  border: 2px solid currentColor;
+  border-radius: 2px;
+  font-size: 0;
+}
+
+.orient-portrait {
+  display: inline-block;
+  width: 12px;
+  height: 18px;
+  border: 2px solid currentColor;
+  border-radius: 2px;
+  font-size: 0;
 }
 
 .detail-hero-img {
@@ -16,6 +77,37 @@
   max-width: 100%;
   object-fit: contain;
   border-radius: var(--radius-lg);
+  transition: all var(--transition-base);
+}
+
+.detail-hero-img.portrait {
+  max-height: 75vh;
+  max-width: 400px;
+}
+
+/* Download Info */
+.download-info {
+  margin-bottom: var(--space-6);
+}
+
+.download-hint {
+  font-size: var(--text-sm);
+  color: var(--text-tertiary);
+  padding: var(--space-3) var(--space-4);
+  background: var(--bg-glass);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  line-height: 1.6;
+}
+
+.btn-download-4k {
+  border-color: rgba(245, 158, 11, 0.4) !important;
+  color: #fbbf24 !important;
+}
+
+.btn-download-avif {
+  border-color: rgba(16, 185, 129, 0.4) !important;
+  color: #34d399 !important;
 }
 
 /* Body */

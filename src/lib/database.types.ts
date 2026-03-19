@@ -150,14 +150,19 @@ export interface ImageData {
   seed: number;
   width: number;
   height: number;
+  width_portrait: number;
+  height_portrait: number;
   style: "realistic" | "anime";
   is_holiday: boolean;
   holiday_name?: string;
   tags_zh: string[];
   tags_en: string[];
   thumbnail: string;
+  thumbnail_portrait: string;
   r2_4k_key: string;
+  r2_4k_portrait_key: string;
   r2_avif_key: string;
+  r2_avif_portrait_key: string;
   likes_count: number;
   views_count: number;
   downloads_4k: number;
@@ -189,6 +194,8 @@ export function rowToImageData(row: ImageRow): ImageData {
     seed: row.seed || 0,
     width: row.width,
     height: row.height,
+    width_portrait: 2304,
+    height_portrait: 4096,
     style: row.style,
     is_holiday: row.is_holiday,
     holiday_name: row.holiday_name || undefined,
@@ -197,8 +204,13 @@ export function rowToImageData(row: ImageRow): ImageData {
     thumbnail: row.r2_thumb_400
       ? `${R2_PUBLIC_URL}/${row.r2_thumb_400}`
       : "/images/mock/mountain.png",
+    thumbnail_portrait: row.r2_thumb_400
+      ? `${R2_PUBLIC_URL}/${row.r2_thumb_400}`.replace('.png', '-portrait.png')
+      : "/images/mock/mountain.png",
     r2_4k_key: row.r2_4k_key || "",
+    r2_4k_portrait_key: (row.r2_4k_key || "").replace('.png', '-portrait.png'),
     r2_avif_key: row.r2_avif_key || "",
+    r2_avif_portrait_key: (row.r2_avif_key || "").replace('.avif', '-portrait.avif'),
     likes_count: row.likes_count,
     views_count: row.views_count,
     downloads_4k: row.downloads_4k,
@@ -207,3 +219,4 @@ export function rowToImageData(row: ImageRow): ImageData {
     aspect_ratio: row.width / row.height,
   };
 }
+

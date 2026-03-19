@@ -5,17 +5,24 @@ import { useTranslations, useLocale } from "next-intl";
 import { useParams, useRouter } from "next/navigation";
 import Image from "next/image";
 import { getImageById, mockImages } from "@/data/mock";
+import { useAuth } from "@/components/AuthContext";
 import TipModal from "@/components/TipModal";
+import AuthModal from "@/components/AuthModal";
 import ImageCard from "@/components/ImageCard";
 import "./detail.css";
+
+type Orientation = "landscape" | "portrait";
 
 export default function ImageDetailPage() {
   const t = useTranslations("image");
   const locale = useLocale() as "zh" | "en";
   const params = useParams();
   const router = useRouter();
+  const { user } = useAuth();
+  const [orientation, setOrientation] = useState<Orientation>("landscape");
   const [paramsOpen, setParamsOpen] = useState(false);
   const [tipModalOpen, setTipModalOpen] = useState(false);
+  const [authModalOpen, setAuthModalOpen] = useState(false);
   const [liked, setLiked] = useState(false);
   const [favorited, setFavorited] = useState(false);
 
@@ -35,21 +42,73 @@ export default function ImageDetailPage() {
   const prompt = locale === "zh" ? image.prompt_zh : image.prompt_en;
   const tags = locale === "zh" ? image.tags_zh : image.tags_en;
 
-  // Similar images (mock - just pick other images of same style)
+  // Current orientation dimensions
+  const curWidth = orientation === "landscape" ? image.width : image.width_portrait;
+  const curHeight = orientation === "landscape" ? image.height : image.height_portrait;
+  const curThumbnail = orientation === "landscape" ? image.thumbnail : image.thumbnail_portrait;
+
+  // Similar images
   const similarImages = mockImages
     .filter((img) => img.id !== image.id && img.style === image.style)
     .slice(0, 4);
 
+  // Handle 4K download (requires login)
+  const handle4KDownload = () => {
+    if (!user) {
+      setAuthModalOpen(true);
+      return;
+    }
+    const key = orientation === "landscape" ? image.r2_4k_key : image.r2_4k_portrait_key;
+    const filename = `freepics-${image.id}-${orientation}-4k.png`;
+    // In production: generate signed R2 URL; in mock mode: download thumbnail
+    const url = key.startsWith("http") ? key : image.thumbnail;
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = filename;
+    a.click();
+  };
+
+  // Handle AVIF download (no login required)
+  const handleAVIFDownload = () => {
+    const key = orientation === "landscape" ? image.r2_avif_key : image.r2_avif_portrait_key;
+    const filename = `freepics-${image.id}-${orientation}.avif`;
+    // In production: generate signed R2 URL; in mock mode: download thumbnail
+    const url = key.startsWith("http") ? key : image.thumbnail;
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = filename;
+    a.click();
+  };
+
   return (
     <div className="detail-page">
-      {/* Hero Image */}
+      {/* Orientation Toggle + Hero Image */}
       <section className="detail-hero">
+        <div className="orientation-toggle">
+          <button
+            className={`orient-btn ${orientation === "landscape" ? "active" : ""}`}
+            onClick={() => setOrientation("landscape")}
+            title={locale === "zh" ? "横版 16:9" : "Landscape 16:9"}
+          >
+            <span className="orient-icon orient-landscape">▬</span>
+            <span>16:9</span>
+          </button>
+          <button
+            className={`orient-btn ${orientation === "portrait" ? "active" : ""}`}
+            onClick={() => setOrientation("portrait")}
+            title={locale === "zh" ? "竖版 9:16" : "Portrait 9:16"}
+          >
+            <span className="orient-icon orient-portrait">▮</span>
+            <span>9:16</span>
+          </button>
+        </div>
+
         <Image
-          src={image.thumbnail}
+          src={curThumbnail}
           alt={altText}
-          width={1200}
-          height={Math.round(1200 / image.aspect_ratio)}
-          className="detail-hero-img"
+          width={orientation === "landscape" ? 1200 : 675}
+          height={orientation === "landscape" ? 675 : 1200}
+          className={`detail-hero-img ${orientation}`}
           priority
         />
       </section>
@@ -100,15 +159,24 @@ export default function ImageDetailPage() {
           >
             {favorited ? "⭐" : "☆"} {favorited ? t("favorited") : t("favorite")}
           </button>
-          <a className="btn btn-download" href={image.thumbnail} download>
-            📥 {t("download4K")}
-          </a>
-          <a className="btn btn-download" href={image.thumbnail} download>
-            ⚡ {t("downloadAVIF")}
-          </a>
+          <button className="btn btn-download btn-download-4k" onClick={handle4KDownload}>
+            🔒 {t("download4K")} ({orientation === "landscape" ? "16:9" : "9:16"})
+          </button>
+          <button className="btn btn-download btn-download-avif" onClick={handleAVIFDownload}>
+            ⚡ {t("downloadAVIF")} ({orientation === "landscape" ? "16:9" : "9:16"})
+          </button>
           <button className="btn btn-tip" onClick={() => setTipModalOpen(true)}>
             ☕ {t("tip")}
           </button>
+        </div>
+
+        {/* Download Info */}
+        <div className="download-info">
+          <p className="download-hint">
+            {locale === "zh"
+              ? `🔒 4K 原图 (${curWidth}×${curHeight} PNG) 需要登录后下载 · ⚡ AVIF 推荐版本可直接下载`
+              : `🔒 4K Original (${curWidth}×${curHeight} PNG) requires login · ⚡ AVIF version is free to download`}
+          </p>
         </div>
 
         {/* Parameters Panel */}
@@ -161,7 +229,11 @@ export default function ImageDetailPage() {
                   </div>
                   <div className="param-item">
                     <span className="param-label">{t("resolution")}</span>
-                    <span className="param-value">{image.width} × {image.height}</span>
+                    <span className="param-value">
+                      {orientation === "landscape"
+                        ? `${image.width} × ${image.height}`
+                        : `${image.width_portrait} × ${image.height_portrait}`}
+                    </span>
                   </div>
                 </div>
               </div>
@@ -203,6 +275,7 @@ export default function ImageDetailPage() {
       </div>
 
       {tipModalOpen && <TipModal onClose={() => setTipModalOpen(false)} />}
+      {authModalOpen && <AuthModal onClose={() => setAuthModalOpen(false)} />}
     </div>
   );
 }
