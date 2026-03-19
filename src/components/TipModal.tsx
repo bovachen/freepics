@@ -1,6 +1,5 @@
 "use client";
 
-import { useEffect, useRef } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import "./TipModal.css";
 
@@ -11,32 +10,6 @@ interface TipModalProps {
 export default function TipModal({ onClose }: TipModalProps) {
   const t = useTranslations("image");
   const locale = useLocale();
-  const bmcRef = useRef<HTMLDivElement>(null);
-
-  // 英文版：加载 Buy Me a Coffee 小部件
-  useEffect(() => {
-    if (locale !== "en" || !bmcRef.current) return;
-
-    const script = document.createElement("script");
-    script.src = "https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js";
-    script.setAttribute("data-name", "bmc-button");
-    script.setAttribute("data-slug", "yffs");
-    script.setAttribute("data-color", "#FFDD00");
-    script.setAttribute("data-emoji", "☕");
-    script.setAttribute("data-font", "Cookie");
-    script.setAttribute("data-text", "Buy me a coffee");
-    script.setAttribute("data-outline-color", "#000000");
-    script.setAttribute("data-font-color", "#000000");
-    script.setAttribute("data-coffee-color", "#ffffff");
-    bmcRef.current.appendChild(script);
-
-    return () => {
-      // 清理
-      if (bmcRef.current) {
-        bmcRef.current.innerHTML = "";
-      }
-    };
-  }, [locale]);
 
   if (locale === "en") {
     return (
@@ -50,7 +23,16 @@ export default function TipModal({ onClose }: TipModalProps) {
             <p className="tip-desc">{t("tipDesc")}</p>
           </div>
 
-          <div className="tip-bmc-widget" ref={bmcRef} />
+          <div className="tip-bmc-widget">
+            <a href="https://www.buymeacoffee.com/yffs" target="_blank" rel="noopener noreferrer">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png"
+                alt="Buy Me A Coffee"
+                style={{ height: "60px", width: "217px" }}
+              />
+            </a>
+          </div>
         </div>
       </div>
     );

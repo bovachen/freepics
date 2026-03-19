@@ -5,6 +5,8 @@ import { useTranslations, useLocale } from "next-intl";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { mockImages } from "@/data/mock";
+import { useAuth } from "@/components/AuthContext";
+import AuthModal from "@/components/AuthModal";
 import "./profile.css";
 
 type Tab = "likes" | "favorites" | "downloads";
@@ -14,7 +16,9 @@ export default function ProfilePage() {
   const locale = useLocale() as "zh" | "en";
   const router = useRouter();
   const [activeTab, setActiveTab] = useState<Tab>("likes");
-  const [isLoggedIn] = useState(false); // Mock
+  const [authModalOpen, setAuthModalOpen] = useState(false);
+  const { user } = useAuth();
+  const isLoggedIn = !!user;
 
   if (!isLoggedIn) {
     return (
@@ -22,10 +26,11 @@ export default function ProfilePage() {
         <div className="container profile-login-prompt">
           <span className="login-icon">🔒</span>
           <h2>{t("loginRequired")}</h2>
-          <button className="btn btn-primary" onClick={() => {}}>
+          <button className="btn btn-primary" onClick={() => setAuthModalOpen(true)}>
             {t("loginButton")}
           </button>
         </div>
+        {authModalOpen && <AuthModal onClose={() => setAuthModalOpen(false)} />}
       </div>
     );
   }
