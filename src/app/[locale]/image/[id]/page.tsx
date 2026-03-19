@@ -165,9 +165,25 @@ export default function ImageDetailPage() {
           <button className="btn btn-download btn-download-avif" onClick={handleAVIFDownload}>
             ⚡ {t("downloadAVIF")} ({orientation === "landscape" ? "16:9" : "9:16"})
           </button>
-          <button className="btn btn-tip" onClick={() => setTipModalOpen(true)}>
-            ☕ {t("tip")}
-          </button>
+          {locale === "zh" ? (
+            <button className="btn btn-tip" onClick={() => setTipModalOpen(true)}>
+              ☕ {t("tip")}
+            </button>
+          ) : (
+            <a
+              href="https://www.buymeacoffee.com/yffs"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-bmc-inline"
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png"
+                alt="Buy Me A Coffee"
+                className="bmc-btn-img"
+              />
+            </a>
+          )}
         </div>
 
         {/* Download Info */}

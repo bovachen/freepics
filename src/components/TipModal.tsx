@@ -51,10 +51,12 @@ export default function TipModal({ onClose }: TipModalProps) {
         </div>
 
         <div className="tip-qr-placeholder">
-          <div className="qr-code-box">
-            <span className="qr-placeholder-text">微信收款码</span>
-            <p className="qr-note">请将您的微信收款二维码<br/>替换此占位图</p>
-          </div>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/images/shang.jpg"
+            alt="微信收款二维码"
+            style={{ width: "220px", height: "220px", borderRadius: "12px" }}
+          />
         </div>
 
         <p className="tip-note">微信扫码打赏</p>

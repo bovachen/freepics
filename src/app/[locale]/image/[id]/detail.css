@@ -110,6 +110,23 @@
   color: #34d399 !important;
 }
 
+.btn-bmc-inline {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.bmc-btn-img {
+  height: 40px;
+  width: auto;
+  border-radius: var(--radius-md);
+  transition: transform var(--transition-fast);
+}
+
+.bmc-btn-img:hover {
+  transform: scale(1.05);
+}
+
 /* Body */
 .detail-body {
   padding-top: var(--space-8);
