@@ -3,8 +3,7 @@
 import { useMemo } from "react";
 import { useLocale } from "next-intl";
 import { useRouter } from "next/navigation";
-import Image from "next/image";
-import type { ImageData } from "@/data/mock";
+import type { ImageData } from "@/lib/database.types";
 import "./ImageCard.css";
 
 interface ImageCardProps {
@@ -35,11 +34,10 @@ export default function ImageCard({ image, index = 0 }: ImageCardProps) {
       onClick={() => router.push(`/${locale}/image/${image.id}`)}
     >
       <div className="image-card-media">
-        <Image
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
           src={thumbnail}
           alt={locale === "zh" ? image.alt_text_zh : image.alt_text_en}
-          width={isPortrait ? 300 : 400}
-          height={Math.round((isPortrait ? 300 : 400) / aspectRatio)}
           className="image-card-img"
           loading="lazy"
         />
