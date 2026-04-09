@@ -163,6 +163,7 @@ export interface ImageData {
   tags_zh: string[];
   tags_en: string[];
   thumbnail: string;
+  thumbnail_1920: string;
   thumbnail_portrait: string;
   r2_4k_key: string;
   r2_4k_portrait_key: string;
@@ -209,6 +210,9 @@ export function rowToImageData(row: ImageRow): ImageData {
     thumbnail: row.r2_thumb_400
       ? `${R2_PUBLIC_URL}/${row.r2_thumb_400}`
       : "/images/mock/mountain.png",
+    thumbnail_1920: row.r2_thumb_1920
+      ? `${R2_PUBLIC_URL}/${row.r2_thumb_1920}`
+      : "",
     thumbnail_portrait: row.r2_thumb_portrait
       ? `${R2_PUBLIC_URL}/${row.r2_thumb_portrait}`
       : "/images/mock/mountain.png",

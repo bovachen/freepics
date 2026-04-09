@@ -42,7 +42,9 @@ export default function ImageDetailClient({ image, similarImages }: ImageDetailC
 
   const curWidth = orientation === "landscape" ? image.width : image.width_portrait;
   const curHeight = orientation === "landscape" ? image.height : image.height_portrait;
-  const curThumbnail = orientation === "landscape" ? image.thumbnail : image.thumbnail_portrait;
+  const curThumbnail = orientation === "landscape"
+    ? (image.thumbnail_1920 || image.thumbnail)
+    : image.thumbnail_portrait;
 
   const handle4KDownload = () => {
     if (!user) {
