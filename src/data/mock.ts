@@ -25,6 +25,7 @@ export interface ImageData {
   tags_zh: string[];
   tags_en: string[];
   thumbnail: string;           // landscape thumbnail
+  thumbnail_1920: string;      // landscape 1920px HD thumbnail
   thumbnail_portrait: string;  // portrait thumbnail
   r2_4k_key: string;           // landscape 4K original
   r2_4k_portrait_key: string;  // portrait 4K original
@@ -64,6 +65,7 @@ export const mockImages: ImageData[] = [
     tags_zh: ["赛博朋克", "城市", "夜景", "霓虹", "写实", "科幻"],
     tags_en: ["cyberpunk", "city", "night", "neon", "realistic", "sci-fi"],
     thumbnail: "/images/mock/cyberpunk.png",
+    thumbnail_1920: "/images/mock/cyberpunk.png",
     thumbnail_portrait: "/images/mock/cyberpunk.png",
     r2_4k_key: "originals/4k/2026/03/img-001.png",
     r2_4k_portrait_key: "originals/4k/2026/03/img-001-portrait.png",
@@ -102,6 +104,7 @@ export const mockImages: ImageData[] = [
     tags_zh: ["动漫", "少女", "城市", "日落", "樱花", "新海诚"],
     tags_en: ["anime", "girl", "city", "sunset", "cherry blossom", "shinkai"],
     thumbnail: "/images/mock/anime-rooftop.png",
+    thumbnail_1920: "/images/mock/anime-rooftop.png",
     thumbnail_portrait: "/images/mock/anime-rooftop.png",
     r2_4k_key: "originals/4k/2026/03/img-002.png",
     r2_4k_portrait_key: "originals/4k/2026/03/img-002-portrait.png",
@@ -139,6 +142,7 @@ export const mockImages: ImageData[] = [
     tags_zh: ["风景", "雪山", "湖泊", "日出", "写实", "自然"],
     tags_en: ["landscape", "mountain", "lake", "sunrise", "realistic", "nature"],
     thumbnail: "/images/mock/mountain.png",
+    thumbnail_1920: "/images/mock/mountain.png",
     thumbnail_portrait: "/images/mock/mountain.png",
     r2_4k_key: "originals/4k/2026/03/img-003.png",
     r2_4k_portrait_key: "originals/4k/2026/03/img-003-portrait.png",
@@ -177,6 +181,7 @@ export const mockImages: ImageData[] = [
     tags_zh: ["动漫", "日式庭院", "和服", "少女", "鸟居", "治愈"],
     tags_en: ["anime", "japanese garden", "kimono", "girl", "torii", "healing"],
     thumbnail: "/images/mock/anime-garden.png",
+    thumbnail_1920: "/images/mock/anime-garden.png",
     thumbnail_portrait: "/images/mock/anime-garden.png",
     r2_4k_key: "originals/4k/2026/03/img-004.png",
     r2_4k_portrait_key: "originals/4k/2026/03/img-004-portrait.png",
@@ -214,6 +219,7 @@ export const mockImages: ImageData[] = [
     tags_zh: ["星空", "星云", "宇宙", "写实", "紫色", "太空"],
     tags_en: ["stars", "nebula", "space", "realistic", "purple", "cosmos"],
     thumbnail: "/images/mock/space.png",
+    thumbnail_1920: "/images/mock/space.png",
     thumbnail_portrait: "/images/mock/space.png",
     r2_4k_key: "originals/4k/2026/03/img-005.png",
     r2_4k_portrait_key: "originals/4k/2026/03/img-005-portrait.png",
@@ -251,6 +257,7 @@ export const mockImages: ImageData[] = [
     tags_zh: ["海洋", "日落", "帆船", "写实", "暖色", "自然"],
     tags_en: ["ocean", "sunset", "sailboat", "realistic", "warm", "nature"],
     thumbnail: "/images/mock/ocean.png",
+    thumbnail_1920: "/images/mock/ocean.png",
     thumbnail_portrait: "/images/mock/ocean.png",
     r2_4k_key: "originals/4k/2026/03/img-006.png",
     r2_4k_portrait_key: "originals/4k/2026/03/img-006-portrait.png",
@@ -288,6 +295,7 @@ export const mockImages: ImageData[] = [
     tags_zh: ["森林", "迷雾", "晨光", "写实", "自然", "冷色"],
     tags_en: ["forest", "mist", "morning", "realistic", "nature", "cool"],
     thumbnail: "/images/mock/mountain.png",
+    thumbnail_1920: "/images/mock/mountain.png",
     thumbnail_portrait: "/images/mock/mountain.png",
     r2_4k_key: "originals/4k/2026/03/img-007.png",
     r2_4k_portrait_key: "originals/4k/2026/03/img-007-portrait.png",
@@ -325,6 +333,7 @@ export const mockImages: ImageData[] = [
     tags_zh: ["极光", "冰岛", "夜景", "写实", "冷色", "自然"],
     tags_en: ["aurora", "iceland", "night", "realistic", "cool", "nature"],
     thumbnail: "/images/mock/space.png",
+    thumbnail_1920: "/images/mock/space.png",
     thumbnail_portrait: "/images/mock/space.png",
     r2_4k_key: "originals/4k/2026/03/img-008.png",
     r2_4k_portrait_key: "originals/4k/2026/03/img-008-portrait.png",
@@ -363,6 +372,7 @@ export const mockImages: ImageData[] = [
     tags_zh: ["动漫", "机甲", "少女", "战场", "科幻", "暖色"],
     tags_en: ["anime", "mecha", "girl", "battlefield", "sci-fi", "warm"],
     thumbnail: "/images/mock/cyberpunk.png",
+    thumbnail_1920: "/images/mock/cyberpunk.png",
     thumbnail_portrait: "/images/mock/cyberpunk.png",
     r2_4k_key: "originals/4k/2026/03/img-009.png",
     r2_4k_portrait_key: "originals/4k/2026/03/img-009-portrait.png",
@@ -400,6 +410,7 @@ export const mockImages: ImageData[] = [
     tags_zh: ["城市", "夜景", "雨天", "东京", "写实", "霓虹"],
     tags_en: ["city", "night", "rain", "tokyo", "realistic", "neon"],
     thumbnail: "/images/mock/cyberpunk.png",
+    thumbnail_1920: "/images/mock/cyberpunk.png",
     thumbnail_portrait: "/images/mock/cyberpunk.png",
     r2_4k_key: "originals/4k/2026/03/img-010.png",
     r2_4k_portrait_key: "originals/4k/2026/03/img-010-portrait.png",
@@ -437,6 +448,7 @@ export const mockImages: ImageData[] = [
     tags_zh: ["海洋", "珊瑚", "水下", "写实", "自然", "暖色"],
     tags_en: ["ocean", "coral", "underwater", "realistic", "nature", "warm"],
     thumbnail: "/images/mock/ocean.png",
+    thumbnail_1920: "/images/mock/ocean.png",
     thumbnail_portrait: "/images/mock/ocean.png",
     r2_4k_key: "originals/4k/2026/03/img-011.png",
     r2_4k_portrait_key: "originals/4k/2026/03/img-011-portrait.png",
@@ -475,6 +487,7 @@ export const mockImages: ImageData[] = [
     tags_zh: ["动漫", "奇幻", "城堡", "云海", "龙", "魔幻"],
     tags_en: ["anime", "fantasy", "castle", "clouds", "dragon", "magical"],
     thumbnail: "/images/mock/mountain.png",
+    thumbnail_1920: "/images/mock/mountain.png",
     thumbnail_portrait: "/images/mock/mountain.png",
     r2_4k_key: "originals/4k/2026/03/img-012.png",
     r2_4k_portrait_key: "originals/4k/2026/03/img-012-portrait.png",
